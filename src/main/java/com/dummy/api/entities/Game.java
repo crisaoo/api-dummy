@@ -10,23 +10,23 @@ import jakarta.persistence.Id;
 import jakarta.persistence.Table;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
-import lombok.NoArgsConstructor;
 import lombok.NonNull;
 import lombok.RequiredArgsConstructor;
 import lombok.Setter;
+import lombok.ToString;
 
 @Getter
 @Setter
 @EqualsAndHashCode(of = {"id"})
-@NoArgsConstructor
+@ToString
 @RequiredArgsConstructor
 @Entity
 @Table(name = "tb_game")
 public class Game implements Serializable{
     private static final long serialVersionUID = 1l;
 
-    @NonNull @Id @GeneratedValue(strategy = GenerationType.IDENTITY) 
-    private Long id;
+    @Id @GeneratedValue(strategy = GenerationType.IDENTITY) 
+    private final Long id;
     @NonNull 
     private String title;
     @NonNull @Column(name = "game_year")
