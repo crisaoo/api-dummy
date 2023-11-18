@@ -39,8 +39,8 @@ public class Game implements Serializable{
     private Double score;
     @NonNull 
     private String imgUrl;
-    @NonNull 
+    @NonNull @Column(columnDefinition = "TEXT")
     private String shortDescription;
-    @NonNull 
+    @NonNull @Column(columnDefinition = "TEXT")
     private String longDescription;
 }
