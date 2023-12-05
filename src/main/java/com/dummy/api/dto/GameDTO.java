@@ -22,6 +22,6 @@ public class GameDTO{
         title = game.getTitle();
         year = game.getYear();
         genre = game.getGenre();
-        shortDescription = game.getShortDescription();
+        shortDescription = game.getShortDescription();  
     }
 }
