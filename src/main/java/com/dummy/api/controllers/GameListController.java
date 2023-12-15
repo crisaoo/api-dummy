@@ -10,25 +10,32 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.dummy.api.dto.GameListDTO;
+import com.dummy.api.dto.GameMinDTO;
 import com.dummy.api.services.GameListService;
+import com.dummy.api.services.GameService;
 
 @RestController
 @RequestMapping(value = "/lists")
 public class GameListController {
     @Autowired
     private GameListService service;
+    @Autowired
+    private GameService gameService;
 
     @GetMapping
-    @Transactional(readOnly = true)
     public List<GameListDTO> getLists(){
         List<GameListDTO> lists = service.findAll();
         return lists;
     }
 
-    @GetMapping(value = "/{id}")
     @Transactional(readOnly = true)
     public GameListDTO getList(@PathVariable Long id){
         GameListDTO gameList = service.findById(id);
         return gameList;
+    }
+
+    @GetMapping(value = "/{listId}/games")
+    public List<GameMinDTO> getGamesByList(@PathVariable Long listId){
+        return gameService.findByList(listId);
     }
 }
