@@ -2,7 +2,6 @@ package com.dummy.api.controllers;
 
 import java.util.List;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -12,11 +11,13 @@ import com.dummy.api.dto.GameDTO;
 import com.dummy.api.dto.GameMinDTO;
 import com.dummy.api.services.GameService;
 
+import lombok.RequiredArgsConstructor;
+
 @RestController
+@RequiredArgsConstructor
 @RequestMapping(value = "/games")
 public class GameController {
-    @Autowired
-    private GameService service;
+    private final GameService service;
 
     @GetMapping 
     public List<GameMinDTO> getGames(){
