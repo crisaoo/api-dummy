@@ -29,6 +29,7 @@ public class GameListController {
     }
 
     @Transactional(readOnly = true)
+    @GetMapping(value = "/{id}")
     public GameListDTO getList(@PathVariable Long id){
         GameListDTO gameList = service.findById(id);
         return gameList;
