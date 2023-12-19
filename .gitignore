@@ -34,3 +34,6 @@ build/
 
 ### Docker Volumes ###
 /docker/.data/
+
+### Dev profile ####
+create.sql
