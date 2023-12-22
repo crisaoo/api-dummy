@@ -1,5 +1,6 @@
 package com.dummy.api.entities;
 
+import java.io.Serial;
 import java.io.Serializable;
 
 import jakarta.persistence.Entity;
@@ -25,6 +26,7 @@ import lombok.ToString;
 @Table(name = "tb_game_list")
 
 public class GameList implements Serializable{
+    @Serial
     private static final long serialVersionUID = 1L;
 
     @Id 
