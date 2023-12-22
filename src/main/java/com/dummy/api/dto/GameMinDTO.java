@@ -17,9 +17,9 @@ import lombok.Setter;
 
 public class GameMinDTO{
     private Long id;
-    private String title ;
-    private Integer year ;
-    private String genre;
+    private String title;
+    private Integer year;
+    private String imgUrl;
     private String shortDescription;
     
     public GameMinDTO(Game game){
@@ -28,5 +28,6 @@ public class GameMinDTO{
 
     public GameMinDTO(GameMinProjection gameMinProjection){
         BeanUtils.copyProperties(gameMinProjection, this);
+        this.year = gameMinProjection.getGameYear();
     }
 }
