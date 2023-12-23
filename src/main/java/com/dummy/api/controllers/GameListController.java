@@ -2,11 +2,7 @@ package com.dummy.api.controllers;
 
 import java.util.List;
 
-import org.springframework.transaction.annotation.Transactional;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import com.dummy.api.dto.ReplacementDTO;
 
 import com.dummy.api.dto.GameListDTO;
 import com.dummy.api.dto.GameMinDTO;
@@ -14,6 +10,7 @@ import com.dummy.api.services.GameListService;
 import com.dummy.api.services.GameService;
 
 import lombok.RequiredArgsConstructor;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequiredArgsConstructor
@@ -28,7 +25,6 @@ public class GameListController {
         return lists;
     }
 
-    @Transactional(readOnly = true)
     @GetMapping(value = "/{id}")
     public GameListDTO getList(@PathVariable Long id){
         GameListDTO gameList = service.findById(id);
@@ -37,6 +33,14 @@ public class GameListController {
 
     @GetMapping(value = "/{listId}/games")
     public List<GameMinDTO> getGamesByList(@PathVariable Long listId){
-        return gameService.findByList(listId);
+        List<GameMinDTO> gameList = gameService.findByList(listId);
+        return gameList;
+    }
+
+    @PostMapping(value = "/{listId}/replacement")
+    public void move(@PathVariable Long listId, @RequestBody ReplacementDTO body){
+        Integer sourcePos = body.getSourcePosition();
+        Integer targetPos = body.getTargetPosition();
+        service.movePosition(listId, sourcePos, targetPos);
     }
 }

@@ -22,21 +22,18 @@ public class GameService {
     @Transactional(readOnly = true)
     public List<GameMinDTO> findAll(){
         List<Game> games = repository.findAll();
-        List<GameMinDTO> gamesDTO = games.stream().map(game -> new GameMinDTO(game)).toList();
-        return gamesDTO;
+        return games.stream().map(GameMinDTO::new).toList();
     }
 
     @Transactional(readOnly = true)
     public GameDTO findByID(Long id){
         Game game = repository.findById(id).get();
-        GameDTO gameDTO = new GameDTO(game);
-        return gameDTO;
+        return new GameDTO(game);
     }
 
     @Transactional(readOnly = true)
     public List<GameMinDTO> findByList(Long listID){
         List<GameMinProjection> gameProjectionList = repository.searchByList(listID);
-        List<GameMinDTO> gameMinDTOList = gameProjectionList.stream().map(gameProjection -> new GameMinDTO(gameProjection)).toList();
-        return gameMinDTOList;
+        return gameProjectionList.stream().map(GameMinDTO::new).toList();
     }
 }
