@@ -39,13 +39,17 @@ O fluxo de requisições de uma transação do back end para uma aplicação que
 
 O diagrama UML abaixo representa as entidades atuantes no projeto.
 
-O domínio principal deste projeto é composto pelas entidades **Game** e **GameList**. 
+O domínio principal deste projeto é composto pelas entidades **Pokemon** e **Pokeball**. 
 
-A entidade **Belonging** tem como objetivo representar a relação N → N entre as entidades Game e Gamelist
+As entidades **PokemonType** e **Pokeball** são do tipo *enum* e são compostas por valores constantes com seus códigos inteiros correspondentes, representando assim os tipos disponíveis de pokemons e pokeballs, respectivamente. 
+
+A entidade **PokemonCapturedByPokeball** tem como objetivo representar uma classe de associação de um pokemon capturado por uma pokeball. 
+
+Futuramente, pretendo expandir esse modelo e adicionar também uma classe para representar um **Trainer**. No momento, ele está sendo representado por uma String.
 
 
 
-<img src="https://drive.google.com/uc?export=view&id=1mD5WLvfMKazK3rdQW4AaF94JDgcnrH-A" width=800>
+<img src="https://drive.google.com/uc?export=view&id=1-QUxXWZkobeZo6PV4wELiuSpLb0paSBp" width=800 height=1000>
 
 
 
