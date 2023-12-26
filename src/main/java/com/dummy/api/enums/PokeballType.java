@@ -4,33 +4,33 @@ import lombok.Getter;
 
 @Getter
 public enum PokeballType {
-    REGULAR(1),
-    GREAT(2),
-    ULTRA(3),
-    MASTER(4),
-    LOVE(5),
-    LURE(6),
-    NET(7),
-    SAFARI(8),
-    LEVEL(9),
-    LUXURY(10),
-    PREMIER(11),
-    DIVE(12),
-    NEST(13),
-    REPEAT(14),
-    TIMER(15),
-    QUICK(16),
-    DUSK(17),
-    SPORT(18),
-    HEAL(19),
-    CHERISH(20),
-    PARK(21),
-    DREAM(22),
-    BEAST(23),
-    FAST(24),
-    FRIEND(25),
-    HEAVY(26),
-    MOON(27);
+    REGULAR(0),
+    GREAT(1),
+    ULTRA(2),
+    MASTER(3),
+    LOVE(4),
+    LURE(5),
+    NET(6),
+    SAFARI(7),
+    LEVEL(8),
+    LUXURY(9),
+    PREMIER(10),
+    DIVE(11),
+    NEST(12),
+    REPEAT(13),
+    TIMER(14),
+    QUICK(15),
+    DUSK(16),
+    SPORT(17),
+    HEAL(18),
+    CHERISH(19),
+    PARK(20),
+    DREAM(21),
+    BEAST(22),
+    FAST(23),
+    FRIEND(24),
+    HEAVY(25),
+    MOON(26);
 
     private final int code;
 
@@ -42,7 +42,6 @@ public enum PokeballType {
         for(PokeballType type : PokeballType.values())
             if(type.getCode() == code)
                 return type;
-
         throw new IllegalArgumentException("Code pokeball type not found.");
     }
 }
