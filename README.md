@@ -49,7 +49,7 @@ Futuramente, pretendo expandir esse modelo e adicionar também uma classe para r
 
 
 
-<img src="https://drive.google.com/uc?export=view&id=1-QUxXWZkobeZo6PV4wELiuSpLb0paSBp" width=800 height=1000>
+<img src="https://drive.google.com/uc?export=view&id=1r16YKfjvtxX5qwDbsWLpjq-N0VVgqtFn" width=800 height=1000>
 
 
 

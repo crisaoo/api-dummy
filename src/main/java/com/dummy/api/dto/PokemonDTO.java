@@ -17,7 +17,7 @@ public class PokemonDTO {
     private String name;
     private PokemonType types;
     private PokemonType weaknesses;
-    private Pokemon evolution;
+    private Long evolution;
     private Double weight;
     private Double height;
 

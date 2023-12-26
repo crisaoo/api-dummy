@@ -29,11 +29,11 @@ public enum PokemonType {
         this.code = code;
     }
 
-    public static PokemonType valueOf(int code){
-        for(PokemonType type : PokemonType.values())
-            if(type.getCode() == code)
-                return type;
+        public static PokemonType valueOf(int code){
+            for(PokemonType type : PokemonType.values())
+                if(type.getCode() == code)
+                    return type;
 
-        throw new IllegalArgumentException("Code pokemon type not found.");
-    }
+            throw new IllegalArgumentException("Code pokemon type not found.");
+        }
 }

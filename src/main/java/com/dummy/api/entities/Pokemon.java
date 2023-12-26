@@ -6,6 +6,7 @@ import lombok.*;
 
 import java.io.Serial;
 import java.io.Serializable;
+import java.util.List;
 
 @Getter
 @Setter
@@ -21,13 +22,18 @@ public class Pokemon implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String name;
-    @Enumerated(EnumType.STRING)
-    private PokemonType types;
-    @Enumerated(EnumType.STRING)
-    private PokemonType weaknesses;
-    @OneToOne
-    @JoinColumn(name = "evolution")
-    private Pokemon evolution;
+    private Long evolution;
     private Double weight;
     private Double height;
+
+    @Enumerated(EnumType.STRING)
+    @ElementCollection(targetClass = PokemonType.class)
+    @CollectionTable(name = "tb_pokemon_type")
+    @Column(name = "type")
+    private List<PokemonType> types;
+    @Enumerated(EnumType.STRING)
+    @ElementCollection(targetClass = PokemonType.class)
+    @CollectionTable(name = "tb_pokemon_weakness")
+    @Column(name = "weakness")
+    private List<PokemonType> weaknesses;
 }
