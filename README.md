@@ -41,7 +41,9 @@ O diagrama UML abaixo representa as entidades atuantes no projeto.
 
 O domínio principal deste projeto é composto pelas entidades **Pokemon** e **Pokeball**. 
 
-As entidades **PokemonType** e **Pokeball** são do tipo *enum* e são compostas por valores constantes com seus códigos inteiros correspondentes, representando assim os tipos disponíveis de pokemons e pokeballs, respectivamente. 
+As entidades **PokemonType** e **PokeballType** são do tipo *enum* e são compostas por valores constantes com seus códigos inteiros correspondentes, representando assim os tipos disponíveis de pokemons e pokeballs, respectivamente. 
+
+A entidade **CatchRate** representa a taxa de captura de uma pokebola para N tipos de pokemon. Essa taxa ignora outras dados como a saúde e status do pokemon (atributos que posteriormente podem ser implementados), levando em conta apenas o tipo da pokeball e o tipo do pokemon. Por exemplo, uma pokeball do tipo Safari tem um catch rate de 1.5x para pokemons do tipo Grass, porém, para outros pokemons, a catch rate é de apenas 1x.
 
 A entidade **PokemonCapturedByPokeball** tem como objetivo representar uma classe de associação de um pokemon capturado por uma pokeball. 
 
@@ -49,7 +51,7 @@ Futuramente, pretendo expandir esse modelo e adicionar também uma classe para r
 
 
 
-<img src="https://drive.google.com/uc?export=view&id=1r16YKfjvtxX5qwDbsWLpjq-N0VVgqtFn" width=800 height=1000>
+<img src="https://drive.google.com/uc?export=view&id=1kWtYixtYb4lRHWDJhWmYA4JyFJUiIPlV" width=800 >
 
 
 
