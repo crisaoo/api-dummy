@@ -1,4 +1,4 @@
-package com.dummy.api.entities;
+package com.dummy.api.entities.pk;
 
 import java.io.Serial;
 import java.io.Serializable;

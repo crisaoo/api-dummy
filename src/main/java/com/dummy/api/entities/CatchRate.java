@@ -8,6 +8,8 @@ import lombok.*;
 import java.io.Serial;
 import java.io.Serializable;
 
+import com.dummy.api.entities.pk.CatchRatePK;
+
 @Getter
 @Setter
 @NoArgsConstructor
@@ -18,6 +20,6 @@ public class CatchRate implements Serializable {
     @Serial
     private static final long serialVersionUID = 1L;
     @EmbeddedId
-    private CatchRatePK pk = new CatchRatePK();
+    private CatchRatePK pk;
     private Double catchRate;
 }
