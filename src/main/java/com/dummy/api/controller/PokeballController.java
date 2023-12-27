@@ -1,7 +1,8 @@
-package com.dummy.api.controllers;
+package com.dummy.api.controller;
 
-import com.dummy.api.entities.Pokeball;
-import com.dummy.api.services.PokeballService;
+import com.dummy.api.model.Pokeball;
+import com.dummy.api.service.PokeballService;
+
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -12,6 +13,7 @@ import java.util.List;
 @RequiredArgsConstructor
 @RestController
 @RequestMapping(value = "/pokeballs")
+
 public class PokeballController {
     private final PokeballService service;
 

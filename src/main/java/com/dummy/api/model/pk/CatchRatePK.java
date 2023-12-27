@@ -1,10 +1,10 @@
-package com.dummy.api.entities.pk;
+package com.dummy.api.model.pk;
 
 import java.io.Serial;
 import java.io.Serializable;
 
-import com.dummy.api.enums.PokeballType;
-import com.dummy.api.enums.PokemonType;
+import com.dummy.api.model.enums.PokeballType;
+import com.dummy.api.model.enums.PokemonType;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Embeddable;
@@ -18,6 +18,7 @@ import lombok.Setter;
 @NoArgsConstructor
 @EqualsAndHashCode
 @Embeddable
+
 public class CatchRatePK implements Serializable {
     @Serial
     private static final long serialVersionUID = 1L;

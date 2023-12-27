@@ -1,8 +1,8 @@
-package com.dummy.api.entities;
+package com.dummy.api.model;
 
 import java.time.LocalDate;
 
-import com.dummy.api.entities.pk.PokemonCapturedPK;
+import com.dummy.api.model.pk.PokemonCapturedPK;
 
 import jakarta.persistence.EmbeddedId;
 import jakarta.persistence.Entity;
@@ -18,8 +18,10 @@ import lombok.Setter;
 @NoArgsConstructor
 @AllArgsConstructor
 @EqualsAndHashCode(of = {"pk"})
+
 @Entity
 @Table(name = "tb_pokemon_captured")
+
 public class PokemonCaptured {
     private LocalDate captureDate;
     private String location;

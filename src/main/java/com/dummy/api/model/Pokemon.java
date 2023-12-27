@@ -1,6 +1,5 @@
-package com.dummy.api.entities;
+package com.dummy.api.model;
 
-import com.dummy.api.enums.PokemonType;
 import jakarta.persistence.*;
 import lombok.*;
 
@@ -8,13 +7,17 @@ import java.io.Serial;
 import java.io.Serializable;
 import java.util.List;
 
+import com.dummy.api.model.enums.PokemonType;
+
 @Getter
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
 @EqualsAndHashCode(of = {"id"})
+
 @Entity
 @Table(name = "tb_pokemon")
+
 public class Pokemon implements Serializable {
     @Serial
     private static final long serialVersionUID = 1L;

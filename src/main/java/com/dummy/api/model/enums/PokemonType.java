@@ -1,8 +1,9 @@
-package com.dummy.api.enums;
+package com.dummy.api.model.enums;
 
 import lombok.Getter;
 
 @Getter
+
 public enum PokemonType {
     NORMAL(0),
     FIRE(1),

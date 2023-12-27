@@ -1,7 +1,7 @@
-package com.dummy.api.services;
+package com.dummy.api.service;
 
-import com.dummy.api.dto.PokemonDTO;
-import com.dummy.api.entities.Pokemon;
+import com.dummy.api.model.Pokemon;
+import com.dummy.api.model.dto.PokemonDTO;
 import com.dummy.api.repository.PokemonRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -9,8 +9,9 @@ import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
-@Service
 @RequiredArgsConstructor
+@Service
+
 public class PokemonService {
     private final PokemonRepository repository;
 
