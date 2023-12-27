@@ -1,13 +1,27 @@
 package com.dummy.api.model;
 
-import jakarta.persistence.*;
-import lombok.*;
-
 import java.io.Serial;
 import java.io.Serializable;
 import java.util.List;
 
 import com.dummy.api.model.enums.PokemonType;
+
+import jakarta.persistence.Column;
+import jakarta.persistence.ElementCollection;
+import jakarta.persistence.Entity;
+import jakarta.persistence.EnumType;
+import jakarta.persistence.Enumerated;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.JoinTable;
+import jakarta.persistence.Table;
+import lombok.AllArgsConstructor;
+import lombok.EqualsAndHashCode;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 @Getter
 @Setter
@@ -29,14 +43,15 @@ public class Pokemon implements Serializable {
     private Double weight;
     private Double height;
 
-    @Enumerated(EnumType.STRING)
-    @ElementCollection(targetClass = PokemonType.class)
-    @CollectionTable(name = "tb_pokemon_type")
+    @ElementCollection(targetClass =  PokemonType.class)
+    @JoinTable(name = "tb_pokemon_type", joinColumns = @JoinColumn(name = "pokemon_id"))
     @Column(name = "type")
-    private List<PokemonType> types;
     @Enumerated(EnumType.STRING)
-    @ElementCollection(targetClass = PokemonType.class)
-    @CollectionTable(name = "tb_pokemon_weakness")
+    private List<PokemonType> types;
+
+    @ElementCollection(targetClass =  PokemonType.class)
+    @JoinTable(name = "tb_pokemon_weakness", joinColumns = @JoinColumn(name = "pokemon_id"))
     @Column(name = "weakness")
+    @Enumerated(EnumType.STRING)
     private List<PokemonType> weaknesses;
 }
