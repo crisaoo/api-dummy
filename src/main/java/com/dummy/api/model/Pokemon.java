@@ -6,17 +6,7 @@ import java.util.List;
 
 import com.dummy.api.model.enums.PokemonType;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.ElementCollection;
-import jakarta.persistence.Entity;
-import jakarta.persistence.EnumType;
-import jakarta.persistence.Enumerated;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.JoinTable;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
@@ -31,7 +21,6 @@ import lombok.Setter;
 
 @Entity
 @Table(name = "tb_pokemon")
-
 public class Pokemon implements Serializable {
     @Serial
     private static final long serialVersionUID = 1L;
@@ -39,10 +28,12 @@ public class Pokemon implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String name;
+    // TODO: add the relationship in the import.sql and add to the dto
     private Long evolution;
     private Double weight;
     private Double height;
 
+    // TODO: add a list size validation, the max value should be 2 and the min be 1
     @ElementCollection(targetClass =  PokemonType.class)
     @JoinTable(name = "tb_pokemon_type", joinColumns = @JoinColumn(name = "pokemon_id"))
     @Column(name = "type")

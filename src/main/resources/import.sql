@@ -1,12 +1,27 @@
 INSERT INTO tb_pokemon (id, name, evolution, weight, height) VALUES (1, 'Bulbasaur', null, 6.9, 0.7);
-INSERT INTO tb_pokemon (id, name, evolution, weight, height) VALUES (2, 'Caterpie', null, 2.9, 0.3);
+INSERT INTO tb_pokemon (id, name, evolution, weight, height) VALUES (2, 'Squirtle', null, 9, 0.5);
+INSERT INTO tb_pokemon (id, name, evolution, weight, height) VALUES (3, 'Charmander', null, 8.5, 0.61);
+INSERT INTO tb_pokemon (id, name, evolution, weight, height) VALUES (4, 'Pikachu', null, 6, 0.4);
+
 
 INSERT INTO tb_pokemon_type (pokemon_id, type) VALUES (1, 'GRASS');
 INSERT INTO tb_pokemon_type (pokemon_id, type) VALUES (1, 'POISON');
-INSERT INTO tb_pokemon_type (pokemon_id, type) VALUES (2, 'BUG')
+INSERT INTO tb_pokemon_type (pokemon_id, type) VALUES (2, 'WATER');
+INSERT INTO tb_pokemon_type (pokemon_id, type) VALUES (3, 'FIRE');
+INSERT INTO tb_pokemon_type (pokemon_id, type) VALUES (4, 'ELECTRIC');
+
 
 INSERT INTO tb_pokemon_weakness (pokemon_id, weakness) VALUES (1, 'FIRE');
-INSERT INTO tb_pokemon_weakness (pokemon_id, weakness) VALUES (2, 'FIRE');
+INSERT INTO tb_pokemon_weakness (pokemon_id, weakness) VALUES (1, 'ICE');
+INSERT INTO tb_pokemon_weakness (pokemon_id, weakness) VALUES (1, 'FLYING');
+INSERT INTO tb_pokemon_weakness (pokemon_id, weakness) VALUES (1, 'POISON');
+INSERT INTO tb_pokemon_weakness (pokemon_id, weakness) VALUES (1, 'BUG');
+INSERT INTO tb_pokemon_weakness (pokemon_id, weakness) VALUES (2, 'ELECTRIC');
+INSERT INTO tb_pokemon_weakness (pokemon_id, weakness) VALUES (2, 'GRASS');
+INSERT INTO tb_pokemon_weakness (pokemon_id, weakness) VALUES (3, 'WATER');
+INSERT INTO tb_pokemon_weakness (pokemon_id, weakness) VALUES (3, 'ROCK');
+INSERT INTO tb_pokemon_weakness (pokemon_id, weakness) VALUES (4, 'FLYING');
+INSERT INTO tb_pokemon_weakness (pokemon_id, weakness) VALUES (4, 'STEEL');
 
 INSERT INTO tb_pokeball (id, type, price, description) VALUES (1, 'SAFARI', null, 'The Safari Ball is a type of Poké Ball introduced in Generation I. It can be used to catch wild Pokémon during a Safari Game.');
 

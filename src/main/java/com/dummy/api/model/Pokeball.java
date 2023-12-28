@@ -1,6 +1,5 @@
 package com.dummy.api.model;
 
-
 import java.io.Serial;
 import java.io.Serializable;
 
