@@ -59,17 +59,48 @@ Futuramente, pretendo expandir esse modelo e adicionar também uma classe para r
 
 usar swagger
 
+## Perfis de projeto
+
+Antes de executar o projeto, é preciso determinar qual o perfil que irá rodar a aplicação. Há 3 perfis:
+
+- **test**: Perfil default do projeto, utiliza o banco de dados em memória H2, então não é necessário nenhuma instalação prévia. O banco já está populado, o arquivo de seeding está localizado em `/src/main/resources/import.sql`.
+- **dev**: Este perfil utiliza o banco de dados postgres, então é necessário criar e configurar o banco de dados. O arquivo `create.sql` para a criação e população das tabelas está localizado na pasta raiz. Em relação a instalação do banco, há 2 alternativas:
+    - instalar o postgresql na máquina;
+    - utilizar o docker-compose para criar os containers do PostgreSQL e PGadmin. O arquivo para a criação dos containeres está localizado em `/docker/docker-compose.yml`.
+ 
+
+- **prod**: Perfil destinado para uma futura implantação na nuvem. 
+
+Para mudar o perfil do projeto, basta acessar o arquivo `application.properties` localizado no diretório `/src/main/resources/` e alterar a variável `APP_PROFILE`. Os outros arquivos properties são especificações de cada perfil..
 
 ## Como executar o projeto 
 
 Pré-requisitos: 
 
 - Java 21
+- Docker/docker-compose ou PostgreSQL (para o perfil dev)
+
+Clonar o repositório:
 
 ```bash
-# clonar repositório
 git clone https://github.com/crisaoo/api-dummy.git
+```
 
+Caso esteja no perfil dev e opte por usar o docker para criar o container do postgresql/pgadmin:
+
+```bash
+# entrar na pasta do arquivo de criação dos containers
+cd api/docker
+
+# subir as imagens
+docker-compose up -d
+
+# sair da pasta do projeto
+cd ../..
+```
+
+Para executar o projeto:
+```bash
 # entrar na pasta do projeto
 cd api-dummy
 
