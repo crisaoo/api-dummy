@@ -18,7 +18,7 @@ public interface PokemonRepository extends JpaRepository<Pokemon, Long>{
             FROM tb_pokemon
             INNER JOIN tb_pokemon_weakness ON tb_pokemon.id = tb_pokemon_weakness.pokemon_id
             WHERE tb_pokemon.id = :pokemonId
-        )
+        ) AND tb_pokemon.id != :pokemonId
     """)
     List<Pokemon> findCounterPokemons(Long pokemonId);
 }
