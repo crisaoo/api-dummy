@@ -51,7 +51,7 @@ Futuramente, pretendo expandir esse modelo e adicionar também uma classe para r
 
 
 
-<img src="https://drive.google.com/uc?export=view&id=1kWtYixtYb4lRHWDJhWmYA4JyFJUiIPlV" width=800 >
+<img src="https://drive.google.com/uc?export=view&id=1A0P7elTKc0wSq2mdn4So-S0frICZnUe0" width=800 >
 
 
 
