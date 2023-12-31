@@ -29,13 +29,23 @@ public class PokemonController {
 
     @GetMapping("/{id}/counters")
     public List<PokemonListDTO> findCounterPokemons(@PathVariable Long id){
-        // TODO: return a response entity with a header to indicate the weak types?
         return service.findCounterPokemons(id);
+    }
+
+    @GetMapping("/types/{type}")
+    public List<PokemonListDTO> findByType(@PathVariable String type){
+        return service.findByType(type);
     }
 
     @ResponseStatus(HttpStatus.NO_CONTENT)
     @DeleteMapping("/{id}")
     public void deleteById(@PathVariable Long id){
         service.deleteById(id);
+    }
+
+    @ResponseStatus(HttpStatus.CREATED)
+    @PostMapping
+    public void create(@RequestBody PokemonDTO dto){
+        service.create(dto);
     }
 }

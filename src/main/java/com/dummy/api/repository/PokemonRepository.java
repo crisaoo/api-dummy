@@ -8,6 +8,7 @@ import org.springframework.data.jpa.repository.Query;
 import java.util.List;
 
 public interface PokemonRepository extends JpaRepository<Pokemon, Long>{
+    //TODO: Create a filter to not repeat pokemons
     @Query(nativeQuery = true, value = """
         SELECT *
         FROM tb_pokemon
@@ -20,4 +21,12 @@ public interface PokemonRepository extends JpaRepository<Pokemon, Long>{
         ) AND tb_pokemon.id != :pokemonId
     """)
     List<Pokemon> findCounterPokemons(Long pokemonId);
+
+    @Query(nativeQuery = true, value = """
+        SELECT *
+        FROM tb_pokemon
+        INNER JOIN tb_pokemon_type ON tb_pokemon.id  = tb_pokemon_type.pokemon_id
+        WHERE type = :type
+    """)
+    List<Pokemon> findByType(String type);
 }
