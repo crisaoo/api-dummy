@@ -6,18 +6,7 @@ import java.util.List;
 
 import com.dummy.api.model.enums.PokemonType;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.ElementCollection;
-import jakarta.persistence.Entity;
-import jakarta.persistence.EnumType;
-import jakarta.persistence.Enumerated;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.JoinTable;
-import jakarta.persistence.Table;
-import jakarta.persistence.OneToOne;
+import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
@@ -42,7 +31,7 @@ public class Pokemon implements Serializable {
     private Long id;
     private String name;
     @JoinColumn(name = "evolution_id")
-    @OneToOne
+    @OneToOne(cascade = CascadeType.ALL)
     private Pokemon evolution;
     private Double weight;
     private Double height;

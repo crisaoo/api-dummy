@@ -51,4 +51,9 @@ public class PokemonService {
 
         return dto;
     }
+
+    @Transactional
+    public void deleteById(Long id){
+        repository.deleteById(id);
+    }
 }

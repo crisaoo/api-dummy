@@ -6,10 +6,8 @@ import com.dummy.api.service.PokemonService;
 
 import lombok.RequiredArgsConstructor;
 
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.http.HttpStatus;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -33,5 +31,11 @@ public class PokemonController {
     public List<PokemonListDTO> findCounterPokemons(@PathVariable Long id){
         // TODO: return a response entity with a header to indicate the weak types?
         return service.findCounterPokemons(id);
+    }
+
+    @ResponseStatus(HttpStatus.NO_CONTENT)
+    @DeleteMapping("/{id}")
+    public void deleteById(@PathVariable Long id){
+        service.deleteById(id);
     }
 }
