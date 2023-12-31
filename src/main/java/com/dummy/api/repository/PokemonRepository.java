@@ -1,6 +1,5 @@
 package com.dummy.api.repository;
 
-import com.dummy.api.model.enums.PokemonType;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import com.dummy.api.model.Pokemon;

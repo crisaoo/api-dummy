@@ -1,4 +1,4 @@
 package com.dummy.api.model.records;
 
-public record PokemonListDTO(String name, Double weight, Double height) {
+public record PokemonListDTO(Long id, String name, Double weight, Double height) {
 }

@@ -23,6 +23,7 @@ import lombok.Setter;
 @Table(name = "tb_pokemon_captured")
 
 public class PokemonCaptured {
+    // TODO: date
     private LocalDate captureDate;
     private String location;
     private String trainer;

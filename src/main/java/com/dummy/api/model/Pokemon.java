@@ -17,11 +17,14 @@ import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.JoinTable;
 import jakarta.persistence.Table;
+import jakarta.persistence.OneToOne;
 import lombok.AllArgsConstructor;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import org.hibernate.annotations.Fetch;
+import org.hibernate.annotations.FetchMode;
 
 @Getter
 @Setter
@@ -38,8 +41,9 @@ public class Pokemon implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String name;
-    // TODO: add the relationship in the import.sql and add to the dto
-    private Long evolution;
+    @JoinColumn(name = "evolution_id")
+    @OneToOne
+    private Pokemon evolution;
     private Double weight;
     private Double height;
 
@@ -48,11 +52,13 @@ public class Pokemon implements Serializable {
     @JoinTable(name = "tb_pokemon_type", joinColumns = @JoinColumn(name = "pokemon_id"))
     @Column(name = "type")
     @Enumerated(EnumType.STRING)
+    @Fetch(FetchMode.JOIN)
     private List<PokemonType> types;
 
     @ElementCollection(targetClass =  PokemonType.class)
     @JoinTable(name = "tb_pokemon_weakness", joinColumns = @JoinColumn(name = "pokemon_id"))
     @Column(name = "weakness")
     @Enumerated(EnumType.STRING)
+    @Fetch(FetchMode.JOIN)
     private List<PokemonType> weaknesses;
 }
