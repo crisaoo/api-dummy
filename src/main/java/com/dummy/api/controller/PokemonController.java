@@ -1,7 +1,9 @@
 package com.dummy.api.controller;
 
+import com.dummy.api.model.Pokemon;
 import com.dummy.api.model.records.PokemonDTO;
-import com.dummy.api.model.records.PokemonListDTO;
+import com.dummy.api.model.records.PokemonInsert;
+import com.dummy.api.model.records.PokemonList;
 import com.dummy.api.service.PokemonService;
 
 import lombok.RequiredArgsConstructor;
@@ -18,7 +20,7 @@ public class PokemonController {
     private final PokemonService service;
 
     @GetMapping
-    public List<PokemonListDTO> findAll(){
+    public List<PokemonList> findAll(){
         return service.findAll();
     }
 
@@ -28,12 +30,12 @@ public class PokemonController {
      }
 
     @GetMapping("/{id}/counters")
-    public List<PokemonListDTO> findCounterPokemons(@PathVariable Long id){
+    public List<PokemonList> findCounterPokemons(@PathVariable Long id){
         return service.findCounterPokemons(id);
     }
 
     @GetMapping("/types/{type}")
-    public List<PokemonListDTO> findByType(@PathVariable String type){
+    public List<PokemonList> findByType(@PathVariable String type){
         return service.findByType(type);
     }
 
@@ -45,7 +47,7 @@ public class PokemonController {
 
     @ResponseStatus(HttpStatus.CREATED)
     @PostMapping
-    public void create(@RequestBody PokemonDTO dto){
-        service.create(dto);
+    public Pokemon create(@RequestBody PokemonInsert obj){
+        return service.create(obj);
     }
 }
