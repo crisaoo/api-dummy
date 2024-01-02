@@ -50,4 +50,6 @@ public class PokemonController {
     public Pokemon create(@RequestBody PokemonInsert obj){
         return service.create(obj);
     }
+
+    // TODO: create a put request to update a pokemon evolution
 }
