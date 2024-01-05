@@ -55,9 +55,13 @@ Futuramente, pretendo expandir esse modelo e adicionar também uma classe para r
 
 
 
-## Endpoints
+## Documentação 
 
-usar swagger
+A documentação da API foi feita através do Swagger, uma plataforma open source que simplifica o processo de documentação de APIs, além de fornecer outras funcionalidades.
+
+Para acessar, basta [executar o projeto](#como-executar-o-projeto) e acessar o endereço abaixo:
+
+http://localhost:8080/swagger-ui/index.html#
 
 ## Perfis de projeto
 
@@ -73,7 +77,7 @@ Antes de executar o projeto, é preciso determinar qual o perfil que irá rodar 
 
 Para mudar o perfil do projeto, basta acessar o arquivo `application.properties` localizado no diretório `/src/main/resources/` e alterar a variável `APP_PROFILE`. Os outros arquivos properties são especificações de cada perfil..
 
-## Como executar o projeto 
+## Como executar o projeto
 
 Pré-requisitos: 
 
