@@ -26,6 +26,8 @@ import org.hibernate.annotations.FetchMode;
 @Entity
 @Table(name = "tb_pokemon")
 public class Pokemon implements Serializable {
+    // TODO: implement auditing by adding fields below:
+    //  @CreatedBy, @CreatedDate, @LastModifiedBy and @LastModifiedDate
     @Serial
     private static final long serialVersionUID = 1L;
     @Id

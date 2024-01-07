@@ -1,9 +1,9 @@
 package com.dummy.api.controller;
 
 import com.dummy.api.model.Pokemon;
-import com.dummy.api.model.records.PokemonDTO;
-import com.dummy.api.model.records.PokemonInsert;
-import com.dummy.api.model.records.PokemonList;
+import com.dummy.api.model.dto.PokemonFullDTO;
+import com.dummy.api.model.dto.PokemonInsertDTO;
+import com.dummy.api.model.dto.PokemonMinDTO;
 import com.dummy.api.service.PokemonService;
 
 import io.swagger.v3.oas.annotations.Operation;
@@ -37,7 +37,7 @@ public class PokemonController {
             }
     )
     @GetMapping
-    public List<PokemonList> findAll(){
+    public List<PokemonMinDTO> findAll(){
         return service.findAll();
     }
 
@@ -61,7 +61,7 @@ public class PokemonController {
             }
     )
     @GetMapping("/{id}")
-    public PokemonDTO findById(@PathVariable Long id){
+    public PokemonFullDTO findById(@PathVariable Long id){
         return service.findById(id);
      }
 
@@ -85,7 +85,7 @@ public class PokemonController {
             }
     )
     @GetMapping("/{id}/counters")
-    public List<PokemonList> findCounterPokemons(@PathVariable Long id){
+    public List<PokemonMinDTO> findCounterPokemons(@PathVariable Long id){
         return service.findCounterPokemons(id);
     }
 
@@ -111,7 +111,7 @@ public class PokemonController {
             }
     )
     @GetMapping("/types/{type}")
-    public List<PokemonList> findByType(@PathVariable String type){
+    public List<PokemonMinDTO> findByType(@PathVariable String type){
         return service.findByType(type);
     }
 
@@ -140,6 +140,7 @@ public class PokemonController {
     )
     @ResponseStatus(HttpStatus.NO_CONTENT)
     @DeleteMapping("/{id}")
+    // TODO: make a double check. "Are you sure you want to delete the evolved pokemons?"
     public void deleteById(@PathVariable Long id){
         service.deleteById(id);
     }
@@ -160,7 +161,7 @@ public class PokemonController {
     )
     @ResponseStatus(HttpStatus.CREATED)
     @PostMapping
-    public Pokemon create(@RequestBody PokemonInsert obj){
+    public Pokemon create(@RequestBody PokemonInsertDTO obj){
         return service.create(obj);
     }
 }

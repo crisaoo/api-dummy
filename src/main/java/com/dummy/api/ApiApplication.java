@@ -16,7 +16,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 				email = "crisaodev@outlook.com",
 				url = "https://www.linkedin.com/in/cristiano-costa-709469203/"
 			),
-			title = "OpenApi spec - Api Dummy",
+			title = "Api Dummy - spec",
 			description = "OpenApi documentation for API Dummy",
 			version = "1.0",
 			license = @License(

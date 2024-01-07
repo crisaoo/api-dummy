@@ -1,10 +1,8 @@
 package com.dummy.api.service;
 
 import com.dummy.api.model.Pokemon;
-import com.dummy.api.model.records.PokemonDTO;
-import com.dummy.api.model.records.PokemonEvolution;
-import com.dummy.api.model.records.PokemonInsert;
-import com.dummy.api.model.records.PokemonList;
+import com.dummy.api.model.dto.*;
+import com.dummy.api.model.dto.projections.IPokemonMinProj;
 import com.dummy.api.repository.PokemonRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.BeanUtils;
@@ -19,31 +17,31 @@ public class PokemonService {
     private final PokemonRepository repository;
 
     @Transactional(readOnly = true)
-    public List<PokemonList> findAll(){
-        return toListDTO(repository.findAll());
+    public List<PokemonMinDTO> findAll(){
+        return toListDTO(repository.findAllPokemons());
     }
 
     @Transactional(readOnly = true)
-    public PokemonDTO findById(Long id){
+    public PokemonFullDTO findById(Long id){
         // TODO: create a custom exception and handle it
         Pokemon obj = repository.findById(id).orElseThrow();
         Pokemon evolution = obj.getEvolution();
 
-        PokemonEvolution evolutionDTO = null;
+        PokemonMinDTO evolutionDTO = null;
 
         if(evolution != null)
-            evolutionDTO = new PokemonEvolution(evolution.getId(), evolution.getName());
+            evolutionDTO = new PokemonMinDTO(evolution.getId(), evolution.getName());
 
-        return new PokemonDTO(obj.getName(), obj.getWeight(), obj.getHeight(), evolutionDTO, obj.getTypes(), obj.getWeaknesses());
+        return new PokemonFullDTO(obj.getName(), obj.getWeight(), obj.getHeight(), evolutionDTO, obj.getTypes(), obj.getWeaknesses());
     }
 
     @Transactional(readOnly = true)
-    public List<PokemonList> findCounterPokemons(Long id){
+    public List<PokemonMinDTO> findCounterPokemons(Long id){
         return toListDTO(repository.findCounterPokemons(id));
     }
 
     @Transactional(readOnly = true)
-    public List<PokemonList> findByType(String type){
+    public List<PokemonMinDTO> findByType(String type){
         type = type.toUpperCase();
         return toListDTO(repository.findByType(type));
     }
@@ -54,15 +52,15 @@ public class PokemonService {
     }
 
     @Transactional
-    public Pokemon create(PokemonInsert newObj){
+    public Pokemon create(PokemonInsertDTO newObj){
         Pokemon obj = new Pokemon();
         BeanUtils.copyProperties(newObj, obj);
         return repository.save(obj);
     }
 
-    private List<PokemonList> toListDTO(List<Pokemon> list){
-        return list.stream().map(pokemon ->
-            new PokemonList(pokemon.getId(), pokemon.getName(), pokemon.getWeight(), pokemon.getHeight())
+    private List<PokemonMinDTO> toListDTO(List<IPokemonMinProj> list){
+        return list.stream().map(x ->
+            new PokemonMinDTO(x.getId(), x.getName())
         ).toList();
     }
 }
