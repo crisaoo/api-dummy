@@ -52,10 +52,17 @@ public class PokemonService {
     }
 
     @Transactional
-    public Pokemon create(PokemonInsertDTO newObj){
+    public Pokemon create(PokemonInsertDTO objInsert){
         Pokemon obj = new Pokemon();
-        BeanUtils.copyProperties(newObj, obj);
-        return repository.save(obj);
+        BeanUtils.copyProperties(objInsert, obj);
+        obj = repository.save(obj);
+
+        if(objInsert.isEvolutionOf() != null){
+            Pokemon pokemon = repository.findById(objInsert.isEvolutionOf()).orElseThrow();
+            pokemon.setEvolution(obj);
+        }
+
+        return obj;
     }
 
     private List<PokemonMinDTO> toListDTO(List<IPokemonMinProj> list){

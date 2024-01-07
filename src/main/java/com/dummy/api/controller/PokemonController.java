@@ -24,7 +24,6 @@ import java.util.List;
 public class PokemonController {
     private final PokemonService service;
 
-    // TODO: create a put request to update a pokemon evolution
     // TODO: customize examples for responses (e.g.: 404)
 
     @Operation(
