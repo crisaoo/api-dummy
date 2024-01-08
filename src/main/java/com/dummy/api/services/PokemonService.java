@@ -1,9 +1,9 @@
-package com.dummy.api.service;
+package com.dummy.api.services;
 
-import com.dummy.api.model.Pokemon;
-import com.dummy.api.model.dto.*;
-import com.dummy.api.model.dto.projections.IPokemonMinProj;
-import com.dummy.api.repository.PokemonRepository;
+import com.dummy.api.models.Pokemon;
+import com.dummy.api.models.dto.*;
+import com.dummy.api.models.dto.projections.IPokemonMinProj;
+import com.dummy.api.repositories.PokemonRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.BeanUtils;
 import org.springframework.stereotype.Service;

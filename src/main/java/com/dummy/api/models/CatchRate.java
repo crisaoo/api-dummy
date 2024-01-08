@@ -1,4 +1,4 @@
-package com.dummy.api.model;
+package com.dummy.api.models;
 
 import jakarta.persistence.EmbeddedId;
 import jakarta.persistence.Entity;
@@ -11,7 +11,7 @@ import lombok.Setter;
 import java.io.Serial;
 import java.io.Serializable;
 
-import com.dummy.api.model.pk.CatchRatePK;
+import com.dummy.api.models.pk.CatchRatePK;
 
 @Getter
 @Setter

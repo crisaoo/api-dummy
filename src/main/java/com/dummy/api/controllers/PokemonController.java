@@ -1,10 +1,10 @@
-package com.dummy.api.controller;
+package com.dummy.api.controllers;
 
-import com.dummy.api.model.Pokemon;
-import com.dummy.api.model.dto.PokemonFullDTO;
-import com.dummy.api.model.dto.PokemonInsertDTO;
-import com.dummy.api.model.dto.PokemonMinDTO;
-import com.dummy.api.service.PokemonService;
+import com.dummy.api.models.Pokemon;
+import com.dummy.api.models.dto.PokemonFullDTO;
+import com.dummy.api.models.dto.PokemonInsertDTO;
+import com.dummy.api.models.dto.PokemonMinDTO;
+import com.dummy.api.services.PokemonService;
 
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.Parameter;
@@ -22,9 +22,14 @@ import java.util.List;
 @RequestMapping(value = "/pokemons")
 @Tag(name = "Pokemon")
 public class PokemonController {
-    private final PokemonService service;
+    // TODO: handle the follow exceptions:
+    //  - pokemon not found
+    //  - type non-existent
+    //  - pokemon already exists
+    //  - pokemon evolution doesn't exists
+    //  - pokemon evolution cannot be deleted
 
-    // TODO: customize examples for responses (e.g.: 404)
+    private final PokemonService service;
 
     @Operation(
             description = "This endpoint returns all pokemon stored in the database.",
@@ -36,6 +41,7 @@ public class PokemonController {
             }
     )
     @GetMapping
+    // TODO: customize examples for responses (e.g.: 404)
     public List<PokemonMinDTO> findAll(){
         return service.findAll();
     }
@@ -87,7 +93,6 @@ public class PokemonController {
     public List<PokemonMinDTO> findCounterPokemons(@PathVariable Long id){
         return service.findCounterPokemons(id);
     }
-
 
     @Operation(
             description = "This endpoint returns a list of all pokemon belonging to this type",

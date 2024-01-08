@@ -1,4 +1,4 @@
-package com.dummy.api.model.dto.projections;
+package com.dummy.api.models.dto.projections;
 
 public interface IPokemonMinProj {
     Long getId();

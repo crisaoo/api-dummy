@@ -1,9 +1,9 @@
-package com.dummy.api.repository;
+package com.dummy.api.repositories;
 
-import com.dummy.api.model.dto.projections.IPokemonMinProj;
+import com.dummy.api.models.dto.projections.IPokemonMinProj;
 import org.springframework.data.jpa.repository.JpaRepository;
 
-import com.dummy.api.model.Pokemon;
+import com.dummy.api.models.Pokemon;
 import org.springframework.data.jpa.repository.Query;
 
 import java.util.List;

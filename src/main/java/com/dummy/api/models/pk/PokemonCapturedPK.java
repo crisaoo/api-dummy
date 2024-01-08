@@ -1,10 +1,10 @@
-package com.dummy.api.model.pk;
+package com.dummy.api.models.pk;
 
 import java.io.Serial;
 import java.io.Serializable;
 
-import com.dummy.api.model.Pokeball;
-import com.dummy.api.model.Pokemon;
+import com.dummy.api.models.Pokeball;
+import com.dummy.api.models.Pokemon;
 
 import jakarta.persistence.Embeddable;
 import jakarta.persistence.JoinColumn;

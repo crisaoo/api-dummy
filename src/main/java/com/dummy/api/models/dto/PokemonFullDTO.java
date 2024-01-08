@@ -1,6 +1,6 @@
-package com.dummy.api.model.dto;
+package com.dummy.api.models.dto;
 
-import com.dummy.api.model.enums.PokemonType;
+import com.dummy.api.models.enums.PokemonType;
 
 import java.util.List;
 

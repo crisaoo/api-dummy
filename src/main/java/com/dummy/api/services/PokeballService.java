@@ -1,7 +1,7 @@
-package com.dummy.api.service;
+package com.dummy.api.services;
 
-import com.dummy.api.model.Pokeball;
-import com.dummy.api.repository.PokeballRepository;
+import com.dummy.api.models.Pokeball;
+import com.dummy.api.repositories.PokeballRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;

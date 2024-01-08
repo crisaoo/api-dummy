@@ -1,9 +1,9 @@
-package com.dummy.api.model;
+package com.dummy.api.models;
 
 import java.io.Serial;
 import java.io.Serializable;
 
-import com.dummy.api.model.enums.PokeballType;
+import com.dummy.api.models.enums.PokeballType;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -21,7 +21,7 @@ import lombok.Setter;
 
 @Getter
 @Setter
-@EqualsAndHashCode(of = {"id"})
+@EqualsAndHashCode
 @NoArgsConstructor
 @AllArgsConstructor
 
@@ -31,12 +31,16 @@ import lombok.Setter;
 public class Pokeball implements Serializable {
     @Serial
     private static final long serialVersionUID = 1L;
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+
     @Enumerated(EnumType.STRING)
     private PokeballType type;
+
     private Double price;
+
     @Column(columnDefinition = "TEXT")
     private String description;
 }

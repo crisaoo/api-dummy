@@ -1,4 +1,4 @@
-package com.dummy.api.model.enums;
+package com.dummy.api.models.enums;
 
 import lombok.Getter;
 

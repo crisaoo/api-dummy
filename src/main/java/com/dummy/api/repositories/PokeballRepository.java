@@ -1,8 +1,8 @@
-package com.dummy.api.repository;
+package com.dummy.api.repositories;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 
-import com.dummy.api.model.Pokeball;
+import com.dummy.api.models.Pokeball;
 
 public interface PokeballRepository extends JpaRepository<Pokeball, Long> {
 }

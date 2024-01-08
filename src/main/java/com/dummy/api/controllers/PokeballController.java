@@ -1,7 +1,7 @@
-package com.dummy.api.controller;
+package com.dummy.api.controllers;
 
-import com.dummy.api.model.Pokeball;
-import com.dummy.api.service.PokeballService;
+import com.dummy.api.models.Pokeball;
+import com.dummy.api.services.PokeballService;
 
 import io.swagger.v3.oas.annotations.Hidden;
 import io.swagger.v3.oas.annotations.tags.Tag;

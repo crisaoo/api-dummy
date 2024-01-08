@@ -1,8 +1,8 @@
-package com.dummy.api.model;
+package com.dummy.api.models;
 
 import java.time.LocalDate;
 
-import com.dummy.api.model.pk.PokemonCapturedPK;
+import com.dummy.api.models.pk.PokemonCapturedPK;
 
 import jakarta.persistence.EmbeddedId;
 import jakarta.persistence.Entity;
