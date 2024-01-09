@@ -22,13 +22,6 @@ import java.util.List;
 @RequestMapping(value = "/pokemons")
 @Tag(name = "Pokemon")
 public class PokemonController {
-    // TODO: handle the follow exceptions:
-    //  - pokemon not found
-    //  - type non-existent
-    //  - pokemon already exists
-    //  - pokemon evolution doesn't exists
-    //  - pokemon evolution cannot be deleted
-
     private final PokemonService service;
 
     @Operation(

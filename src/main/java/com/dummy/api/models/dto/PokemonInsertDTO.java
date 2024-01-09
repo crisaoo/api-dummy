@@ -4,5 +4,5 @@ import com.dummy.api.models.enums.PokemonType;
 
 import java.util.List;
 
-public record PokemonInsertDTO(String name, Double weight, Double height, List<PokemonType> types, List<PokemonType> weaknesses, Long isEvolutionOf) {
+public record PokemonInsertDTO(String name, Double weight, Double height, List<PokemonType> types, List<PokemonType> weaknesses, Long idEvolution) {
 }
