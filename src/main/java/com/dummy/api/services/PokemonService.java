@@ -1,15 +1,18 @@
 package com.dummy.api.services;
 
 import com.dummy.api.exceptions.PokemonNotFoundException;
+import com.dummy.api.exceptions.TypeNonExistentException;
 import com.dummy.api.models.Pokemon;
 import com.dummy.api.models.dto.*;
 import com.dummy.api.models.dto.projections.IPokemonMinProj;
+import com.dummy.api.models.enums.PokemonType;
 import com.dummy.api.repositories.PokemonRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.BeanUtils;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @RequiredArgsConstructor
@@ -18,7 +21,6 @@ public class PokemonService {
     private final PokemonRepository repository;
 
     // TODO: handle the follow exceptions:
-    //  - type non-existent
     //  - pokemon already exists
     //  - pokemon evolution doesn't exists
     //  - pokemon evolution cannot be deleted
@@ -53,7 +55,12 @@ public class PokemonService {
 
     @Transactional(readOnly = true)
     public List<PokemonMinDTO> findByType(String type){
-        return toListDTO(repository.findByType(type.toUpperCase()));
+        List<IPokemonMinProj> proj = repository.findByType(type.toUpperCase());
+
+        if(proj.isEmpty())
+            throw new TypeNonExistentException(type);
+
+        return toListDTO(proj);
     }
 
     @Transactional
@@ -66,6 +73,8 @@ public class PokemonService {
     public Pokemon create(PokemonInsertDTO objInsert){
         Pokemon obj = new Pokemon();
         BeanUtils.copyProperties(objInsert, obj);
+        obj.setTypes(toPokemonTypeList(objInsert.types()));
+        obj.setWeaknesses(toPokemonTypeList(objInsert.weaknesses()));
         obj = repository.save(obj);
 
         Long idEvolution = objInsert.idEvolution();
@@ -83,5 +92,17 @@ public class PokemonService {
         return list.stream().map(x ->
             new PokemonMinDTO(x.getId(), x.getName())
         ).toList();
+    }
+
+    private List<PokemonType> toPokemonTypeList(List<String> typesStr){
+        List<PokemonType> types = new ArrayList<>();
+        for(String type : typesStr){
+            try{
+                types.add(PokemonType.valueOf(type));
+            } catch(IllegalArgumentException e){
+                throw new TypeNonExistentException(type);
+            }
+        }
+        return types;
     }
 }

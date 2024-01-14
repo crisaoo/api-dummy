@@ -10,7 +10,7 @@ import java.time.LocalDateTime;
 @AllArgsConstructor
 @Getter
 @Setter
-public class RestExceptionBody {
+public class ExceptionBodyResponse {
     private HttpStatus status;
     private String message;
     private LocalDateTime timestamp;
