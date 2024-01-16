@@ -1,5 +1,6 @@
 package com.dummy.api.services;
 
+import com.dummy.api.exceptions.PokemonAlreadyExistsException;
 import com.dummy.api.exceptions.PokemonNotFoundException;
 import com.dummy.api.exceptions.TypeNonExistentException;
 import com.dummy.api.models.Pokemon;
@@ -19,9 +20,7 @@ import java.util.List;
 @Service
 public class PokemonService {
     private final PokemonRepository repository;
-
     // TODO: handle the follow exceptions:
-    //  - pokemon already exists
     //  - pokemon evolution doesn't exists
     //  - pokemon evolution cannot be deleted
     //  - pokemon evolution cannot be itself
@@ -71,6 +70,8 @@ public class PokemonService {
 
     @Transactional
     public Pokemon create(PokemonInsertDTO objInsert){
+        checkIfPokemonAlreadyExists(objInsert.name());
+
         Pokemon obj = new Pokemon();
         BeanUtils.copyProperties(objInsert, obj);
         obj.setTypes(toPokemonTypeList(objInsert.types()));
@@ -104,5 +105,12 @@ public class PokemonService {
             }
         }
         return types;
+    }
+
+    private void checkIfPokemonAlreadyExists(String name){
+        name = name.substring(0,1).toUpperCase() + name.substring(1).toLowerCase();
+        IPokemonMinProj pokemon = repository.findByName(name);
+        if (pokemon != null)
+            throw new PokemonAlreadyExistsException(pokemon.getId(), pokemon.getName());
     }
 }

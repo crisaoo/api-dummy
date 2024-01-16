@@ -35,4 +35,11 @@ public interface PokemonRepository extends JpaRepository<Pokemon, Long>{
         WHERE type = :type
     """)
     List<IPokemonMinProj> findByType(String type);
+
+    @Query(nativeQuery = true, value = """
+        SELECT tb_pokemon.id, tb_pokemon.name
+        FROM tb_pokemon
+        WHERE name = :name
+    """)
+    IPokemonMinProj findByName(String name);
 }
