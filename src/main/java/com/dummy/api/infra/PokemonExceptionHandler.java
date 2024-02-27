@@ -2,6 +2,7 @@ package com.dummy.api.infra;
 
 import com.dummy.api.exceptions.PokemonAlreadyExistsException;
 import com.dummy.api.exceptions.PokemonNotFoundException;
+import com.dummy.api.exceptions.RelationshipConstraintViolation;
 import com.dummy.api.exceptions.TypeNonExistentException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -28,6 +29,12 @@ public class PokemonExceptionHandler extends ResponseEntityExceptionHandler {
     @ExceptionHandler(PokemonAlreadyExistsException.class)
     private ResponseEntity<ExceptionBodyResponse> pokemonAlreadyExistsHandler(PokemonAlreadyExistsException exception){
         ExceptionBodyResponse body = new ExceptionBodyResponse(HttpStatus.CONFLICT, exception.getMessage(), LocalDateTime.now());
+        return ResponseEntity.status(body.getStatus()).body(body);
+    }
+
+    @ExceptionHandler(RelationshipConstraintViolation.class)
+    private ResponseEntity<ExceptionBodyResponse> relationshipConstraintViolation(RelationshipConstraintViolation exception){
+        ExceptionBodyResponse body = new ExceptionBodyResponse(HttpStatus.METHOD_NOT_ALLOWED, exception.getMessage(), LocalDateTime.now());
         return ResponseEntity.status(body.getStatus()).body(body);
     }
 }

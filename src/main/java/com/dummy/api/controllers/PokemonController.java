@@ -22,6 +22,7 @@ import java.util.List;
 @RequestMapping(value = "/pokemons")
 @Tag(name = "Pokemon")
 public class PokemonController {
+    // TODO: update response examples
     private final PokemonService service;
 
     @Operation(
@@ -34,7 +35,6 @@ public class PokemonController {
             }
     )
     @GetMapping
-    // TODO: customize examples for responses (e.g.: 404)
     public List<PokemonMinDTO> findAll(){
         return service.findAll();
     }
@@ -137,7 +137,6 @@ public class PokemonController {
     )
     @ResponseStatus(HttpStatus.NO_CONTENT)
     @DeleteMapping("/{id}")
-    // TODO: make a double check. "Are you sure you want to delete the evolved pokemons?"
     public void deleteById(@PathVariable Long id){
         service.deleteById(id);
     }
@@ -153,7 +152,6 @@ public class PokemonController {
                             description = "Pokemon already exists.",
                             responseCode = "409"
                     )
-                    // TODO: create a response to invalidate the creation of a pokemon if the types do not exist
             }
     )
     @ResponseStatus(HttpStatus.CREATED)

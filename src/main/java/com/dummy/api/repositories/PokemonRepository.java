@@ -37,9 +37,16 @@ public interface PokemonRepository extends JpaRepository<Pokemon, Long>{
     List<IPokemonMinProj> findByType(String type);
 
     @Query(nativeQuery = true, value = """
-        SELECT tb_pokemon.id, tb_pokemon.name
+        SELECT id, name
         FROM tb_pokemon
         WHERE name = :name
     """)
     IPokemonMinProj findByName(String name);
+
+    @Query(nativeQuery = true, value = """
+        SELECT *
+        FROM tb_pokemon
+        WHERE evolution_id = :id
+    """)
+    Pokemon findPreEvolutionOfPokemon(Long id);
 }

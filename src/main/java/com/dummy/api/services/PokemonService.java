@@ -2,6 +2,7 @@ package com.dummy.api.services;
 
 import com.dummy.api.exceptions.PokemonAlreadyExistsException;
 import com.dummy.api.exceptions.PokemonNotFoundException;
+import com.dummy.api.exceptions.RelationshipConstraintViolation;
 import com.dummy.api.exceptions.TypeNonExistentException;
 import com.dummy.api.models.Pokemon;
 import com.dummy.api.models.dto.*;
@@ -20,10 +21,6 @@ import java.util.List;
 @Service
 public class PokemonService {
     private final PokemonRepository repository;
-    // TODO: handle the follow exceptions:
-    //  - pokemon evolution doesn't exists
-    //  - pokemon evolution cannot be deleted
-    //  - pokemon evolution cannot be itself
 
     @Transactional(readOnly = true)
     public List<PokemonMinDTO> findAll(){
@@ -65,6 +62,16 @@ public class PokemonService {
     @Transactional
     public void deleteById(Long id){
         Pokemon obj = repository.findById(id).orElseThrow(() -> new PokemonNotFoundException(id));
+        Pokemon preEvolution = repository.findPreEvolutionOfPokemon(id);
+
+        if(obj.getEvolution() != null)
+            throw new RelationshipConstraintViolation("This pokemon is a pre-evolution of pokemon with ID " + obj.getEvolution().getId());
+
+        if(preEvolution != null){
+            preEvolution.setEvolution(null);
+            repository.save(preEvolution);
+        }
+
         repository.delete(obj);
     }
 

@@ -32,7 +32,7 @@ public class Pokemon implements Serializable {
     private String name;
 
     @JoinColumn(name = "evolution_id")
-    @OneToOne(cascade = CascadeType.ALL)
+    @OneToOne
     private Pokemon evolution;
 
     private Double weight;
